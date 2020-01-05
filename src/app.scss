@@ -1,0 +1,23 @@
+$notifs-width : 190px;
+
+.main {
+  display: flex;
+
+  .module {
+    width: 100%;
+    background-color: yellowgreen;
+  }
+  .notifs {
+    height: calc(100vh - 64px);
+    width: 0px;
+    background-color: red;
+  }
+  &.notifs-open {
+    .module {
+      width: calc(100% -#{$notifs-width});
+    }
+    .notifs {
+      width: $notifs-width;
+    }
+  }
+}
