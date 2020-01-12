@@ -14,7 +14,7 @@ $notifs-width : 190px;
   }
   &.notifs-open {
     .module {
-      width: calc(100% -#{$notifs-width});
+      width: calc(100% - #{$notifs-width});
     }
     .notifs {
       width: $notifs-width;
