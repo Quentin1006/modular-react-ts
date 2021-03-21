@@ -5,16 +5,19 @@ import DashboardLayout from './dashboard.layout'
 import DashboardStore from './dashboard.store'
 import DashboardService from './dashboard.service'
 
-import RootStore from '../../models/rootstore'
+import RootStore from 'Common/models/rootstore'
 
 type Dashboard = {
-  authInfos?: object, // might contains authToken, referer, method to refresh token...
-  baseUrl?: string,
+  authInfos?: object // might contains authToken, referer, method to refresh token...
+  baseUrl?: string
   rootStore?: RootStore
 }
 
-const DashboardModule: FunctionComponent<Dashboard> = ({ authInfos, baseUrl }) => {
-  const [ store ] = useState(new DashboardStore(DashboardService))
+const DashboardModule: FunctionComponent<Dashboard> = ({
+  authInfos,
+  baseUrl,
+}) => {
+  const [store] = useState(new DashboardStore(DashboardService))
   return (
     <Provider store={store}>
       <DashboardLayout baseUrl={baseUrl} authInfos={authInfos} />

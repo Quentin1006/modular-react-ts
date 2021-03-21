@@ -5,13 +5,13 @@ import TodoAppLayout from './todo-app.layout'
 import TodoAppStore from './todo-app.store'
 import todoAppService from './todo-app.service'
 
-import RootStore from '../../models/rootstore'
+import RootStore from 'Common/models/rootstore'
 
 import initialTodos from './tests/todos.sample'
 
 type TodoApp = {
-  authInfos?: object, // might contains authToken, referer, method to refresh token...
-  baseUrl?: string,
+  authInfos?: object // might contains authToken, referer, method to refresh token...
+  baseUrl?: string
   rootStore?: RootStore
 }
 

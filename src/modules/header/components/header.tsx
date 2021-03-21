@@ -46,7 +46,12 @@ type ProfileMenu = {
   onMenuClose(): void
 }
 
-const ProfileMenu: FunctionComponent<ProfileMenu> = ({ anchorEl, onMenuClose, isOpen, menuId }) => (
+const ProfileMenu: FunctionComponent<ProfileMenu> = ({
+  anchorEl,
+  onMenuClose,
+  isOpen,
+  menuId,
+}) => (
   <Menu
     anchorEl={anchorEl}
     anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -78,19 +83,19 @@ const Header: FunctionComponent = () => {
   }
 
   const handleToggleNotifs = () => {
-    const customEv = new CustomEvent('toggle notifs', { detail: {} })
+    const customEv = new CustomEvent('Toggle_Notifications', { detail: {} })
     window.dispatchEvent(customEv)
   }
 
   return (
     <div className={classes.grow}>
-      <AppBar position='static'>
+      <AppBar position="static">
         <Toolbar>
           <IconButton
-            edge='start'
+            edge="start"
             className={classes.homeButton}
-            color='inherit'
-            aria-label='Home'
+            color="inherit"
+            aria-label="Home"
           >
             <HomeIcon />
           </IconButton>
@@ -99,11 +104,11 @@ const Header: FunctionComponent = () => {
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label='commands' color="inherit">
-              <ShoppingCartIcon/>
+            <IconButton aria-label="commands" color="inherit">
+              <ShoppingCartIcon />
             </IconButton>
             <IconButton aria-label="help" color="inherit">
-              <HelpOutlineIcon/>
+              <HelpOutlineIcon />
             </IconButton>
             <IconButton
               aria-label="notifications"
