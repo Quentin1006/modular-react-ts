@@ -4,7 +4,7 @@ import { inject } from 'mobx-react'
 // import DashboardStore from '../dashboard.store'
 
 import Dashboard from '../components/dashboard'
-import { SubHeaderBase } from 'src/common/modules/sub-header'
+import { SubHeaderBase } from 'Common/modules/sub-header'
 
 class Line {
   public id: string

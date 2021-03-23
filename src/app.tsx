@@ -4,6 +4,9 @@ import { CircularProgress } from '@material-ui/core'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import HeaderModule from './modules/header/header.root'
+
+require('./app.scss')
+
 const TodoAppModule = React.lazy(
   () => import('./modules/todo-app/todo-app.root'),
 )
