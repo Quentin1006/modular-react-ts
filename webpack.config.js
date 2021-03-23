@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const { BannerPlugin, DefinePlugin } = require('webpack')
 
 const buildTime = new Date()
@@ -13,9 +14,10 @@ const gitRevision = require('child_process')
   .toString()
   .trim()
 
-module.exports = ({ mode }) => {
+module.exports = ({ mode, analyze }) => {
+  const smp = new SpeedMeasurePlugin({ disable: !analyze })
   mode = mode.toLowerCase()
-  return {
+  return smp.wrap({
     mode,
     entry: './src/index.tsx',
     output: {
@@ -33,10 +35,10 @@ module.exports = ({ mode }) => {
         __BUILD_DATE__: `'${buildTime}'`,
         __REVISION__: `'${gitRevision}'`,
       }),
-      new MiniCssExtractPlugin({
+      /* new MiniCssExtractPlugin({
         filename: '[name].css',
         chunkFilename: '[name].css',
-      }),
+      }), */
       new BundleAnalyzerPlugin({
         analyzerMode: 'disabled',
         generateStatsFile: mode === 'production',
@@ -67,5 +69,5 @@ module.exports = ({ mode }) => {
       writeToDisk: true,
       historyApiFallback: true,
     },
-  }
+  })
 }
