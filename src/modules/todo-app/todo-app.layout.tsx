@@ -1,26 +1,25 @@
 import React, { FunctionComponent } from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import TodoListContainer from './containers/todo-list-container'
 
-import { memorizeBaseUrl } from '../../utils'
+import { memorizeBaseUrl } from 'Utils'
 
 type TodoAppLayout = {
-  authInfos?: object,
+  authInfos?: object
   baseUrl?: string
 }
 
-const TodoAppLayout: FunctionComponent<TodoAppLayout> = ({ authInfos, baseUrl = '' }) => {
+const TodoAppLayout: FunctionComponent<TodoAppLayout> = ({
+  authInfos,
+  baseUrl = '',
+}) => {
   const withBaseUrl = memorizeBaseUrl(baseUrl)
   return (
     <Router>
       <Switch>
         <Route exact path={withBaseUrl('/')}>
-          <TodoListContainer/>
+          <TodoListContainer />
         </Route>
         <Route exact path={withBaseUrl('/list')}>
           <div>Hello list</div>

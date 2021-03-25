@@ -1,9 +1,14 @@
 import { observable } from 'mobx'
+import { IRootStore } from 'Common/typings'
 
-export default class DashboardStore {
+export default class HeaderStore {
   @observable protected name: string = 'header'
+  protected service: any
+  protected rootStore: IRootStore
 
-  constructor (service) {
+  constructor(service, rootStore) {
+    this.service = service
+    this.rootStore = rootStore
     console.log('service', service)
   }
 

@@ -1,12 +1,14 @@
-import { StoreInfos } from './store-interfaces'
+import { IRootStore } from 'Common/typings'
 
-class RootStore {
-  addStore (storeInfos: StoreInfos, Store: any) {
-    const { name, service, config } = storeInfos
-    if (!this[name]) {
-      this[name] = new Store(this, service, config)
-    }
-    return this[name]
+class RootStore implements IRootStore {
+  protected domainStores: Record<string, any> = {}
+
+  register(name: string, store: any): void {
+    this.domainStores[name] = store
+  }
+
+  unregister(name: string): void {
+    delete this.domainStores[name]
   }
 }
 

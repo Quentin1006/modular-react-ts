@@ -4,6 +4,7 @@ import { CircularProgress } from '@material-ui/core'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import HeaderModule from './modules/header/header.root'
+import RootStore from 'Common/models/rootstore'
 
 require('./app.scss')
 
@@ -16,15 +17,16 @@ const DashboardModule = React.lazy(
 
 const App: FunctionComponent = () => {
   const [isNotifsOpen, setNotifsOpen] = useState(false)
+  const rootStore = new RootStore()
 
   useEffect(() => {
     const toggleNotifsOpen = () => {
       setNotifsOpen(!isNotifsOpen)
     }
-    window.addEventListener('Toggle_Notifications', () => {
+    globalThis.addEventListener('Toggle_Notifications', () => {
       toggleNotifsOpen()
     })
-    return window.removeEventListener('Toggle_Notifications', () => {
+    return globalThis.removeEventListener('Toggle_Notifications', () => {
       toggleNotifsOpen()
     })
   })
@@ -33,7 +35,7 @@ const App: FunctionComponent = () => {
     <Router>
       <div className="header">
         <Route path="/">
-          <HeaderModule />
+          <HeaderModule rootStore={rootStore} />
         </Route>
       </div>
       <div className={`main ${isNotifsOpen ? 'notifs-open' : ''}`}>

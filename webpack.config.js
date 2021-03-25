@@ -35,10 +35,10 @@ module.exports = ({ mode, analyze }) => {
         __BUILD_DATE__: `'${buildTime}'`,
         __REVISION__: `'${gitRevision}'`,
       }),
-      /* new MiniCssExtractPlugin({
+      new MiniCssExtractPlugin({
         filename: '[name].css',
         chunkFilename: '[name].css',
-      }), */
+      }),
       new BundleAnalyzerPlugin({
         analyzerMode: 'disabled',
         generateStatsFile: mode === 'production',
@@ -49,6 +49,7 @@ module.exports = ({ mode, analyze }) => {
     resolve: {
       alias: {
         Common: [path.resolve(__dirname, './src/common/')],
+        Utils: [path.resolve(__dirname, 'src/utils']
       },
       extensions: ['.ts', '.tsx', '.js', '.jsx', 'scss', 'css'],
     },
@@ -66,7 +67,6 @@ module.exports = ({ mode, analyze }) => {
       contentBase: path.join(__dirname, 'dist'),
       compress: true,
       port: 9000,
-      writeToDisk: true,
       historyApiFallback: true,
     },
   })

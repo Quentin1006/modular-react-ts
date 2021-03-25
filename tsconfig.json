@@ -4,7 +4,8 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "Common/*": ["src/common/*"]
+      "Common/*": ["src/common/*"],
+      "Utils": ["src/utils"]
     },
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,

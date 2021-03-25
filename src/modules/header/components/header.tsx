@@ -84,7 +84,7 @@ const Header: FunctionComponent = () => {
 
   const handleToggleNotifs = () => {
     const customEv = new CustomEvent('Toggle_Notifications', { detail: {} })
-    window.dispatchEvent(customEv)
+    globalThis.dispatchEvent(customEv)
   }
 
   return (
