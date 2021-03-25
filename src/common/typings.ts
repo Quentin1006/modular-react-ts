@@ -17,7 +17,7 @@ export interface IRestClient {
 export interface IModule {
   baseUrl?: string
   config?: any
-  restClient: IRestClient
+  restClient?: IRestClient
   rootStore: IRootStore
   session?: any
   logger?: ILogger
